@@ -1,44 +1,51 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
 <html>
 <head>
-	<title>form!</title>
+	<title>PHP form to email sample form</title>
+<!-- define some style elements-->
+<style>
+label,a 
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px; 
+}
+
+</style>	
+<!-- a helper script for vaidating the form-->
+<script language="JavaScript" src="scripts/gen_validatorv31.js" type="text/javascript"></script>
 </head>
+
+
 <body>
 
-<h1>FORM FORM FORM</h1>
-<form action="mail.php" method="POST">
-<p>Name</p> <input type="text" name="name">
-<p>Email</p> <input type="text" name="email">
-<p>Phone</p> <input type="text" name="phone">
-
-<p>Request Phone Call:</p>
-Yes:<input type="checkbox" value="Yes" name="call"><br />
-No:<input type="checkbox" value="No" name="call"><br />
-
-<p>Website</p> <input type="text" name="website">
-
-<p>Priority</p>
-<select name="priority" size="1">
-<option value="Low">Low</option>
-<option value="Normal">Normal</option>
-<option value="High">High</option>
-<option value="Emergency">Emergency</option>
-</select>
-<br />
-
-<p>Type</p>
-<select name="type" size="1">
-<option value="update">Website Update</option>
-<option value="change">Information Change</option>
-<option value="addition">Information Addition</option>
-<option value="new">New Products</option>
-</select>
-<br />
-
-<p>Message</p><textarea name="message" rows="6" cols="25"></textarea><br />
-<input type="submit" value="Send"><input type="reset" value="Clear">
+<!-- Start code for the form-->
+<form method="post" name="myemailform" action="form-to-email.php">
+	<p>
+		<label for='name'>Enter Name: </label><br>
+		<input type="text" name="name">
+	</p>
+	<p>
+		<label for='email'>Enter Email Address:</label><br>
+		<input type="text" name="email">
+	</p>
+	<p>
+		<label for='message'>Enter Message:</label> <br>
+		<textarea name="message"></textarea>
+	</p>
+	<input type="submit" name='submit' value="submit">
 </form>
+<script language="JavaScript">
+// Code for validating the form
+// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+// for details
+var frmvalidator  = new Validator("myemailform");
+frmvalidator.addValidation("name","req","Please provide your name"); 
+frmvalidator.addValidation("email","req","Please provide your email"); 
+frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+</script>
+<p>
+<a href='http://www.html-form-guide.com/email-form/php-form-to-email.html'
+>PHP form to email article page</a>
+</p>
 </body>
 </html>
-
-
